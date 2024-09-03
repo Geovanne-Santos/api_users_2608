@@ -10,7 +10,9 @@ docker exec -it meu-mysql mysql -u root -p
 ### Instalar e Atualizar os pacotes
 ```node
 npm install
+```
 
 ### Rodar a aplicacão
 ```node
 npm run dev
+```
