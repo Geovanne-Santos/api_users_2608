@@ -1,20 +1,13 @@
 import mysql from "mysql2";
 
+const pool = mysql.createPool({
+    connectionLimit: 10,
+    host: process.env.MYSQL_HOST,
+    database: process.env.MYSQL_DATABASE,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD
+});
 
-async function getConnection () {
-    let pool;
-    
-    if (pool == null) {
-        pool = mysql.createPool({
-            connectionLimit: 10,
-            host: 'localhost',
-            database: 'usersdb',
-            user: 'root',
-            password: 'root'
-        });
-    }    
-    
-    return pool;
-} 
-
-export { getConnection };
+export function getConnection() {
+    return pool.promise();
+}
